@@ -11,42 +11,23 @@ Application (with the embedded H2 database) is ready to be used ! You can access
 > Don't forget to set the `JDBC URL` value as `jdbc:h2:mem:testdb` for H2 UI.
 
 
+#### Updated by Rosslynn Agulto
+- Updated saveEmployee method in the controller class
+  Added @ResponseBody to be able to save correctly the values to the database
+- Updated getEmployee method in the controller class
+  Added try catch method so that we will not encounter system error whenever 
+  trying to retrieve employee using ID which does not exist in the database
+- Updated updateEmployee method in the controller class
+  Added try catch method so that we will not encounter system error whenever 
+  trying to update employee which does not exist in the database
+- Added @Data annotation in Employee class instead of adding @Getter & @Setter in each field
+- Added @transactional annotation in the service implementation class to manage transactions
+- Added @Override in service implementation classes
+- Added javadocs to all classes
 
-### Instructions
+#### Experience in Java
+- I have 2 years of handling java application support role for HR evaluation system
+- I have more than 3 years of experience as a java developer and used spring mvc and springboot
+- I am a mid developer and i am eager to learn more
 
-- download the zip file of this project
-- create a repository in your own github named 'java-challenge'
-- clone your repository in a folder on your machine
-- extract the zip file in this folder
-- commit and push
-
-- Enhance the code in any ways you can see, you are free! Some possibilities:
-  - Add tests
-  - Change syntax
-  - Protect controller end points
-  - Add caching logic for database calls
-  - Improve doc and comments
-  - Fix any bug you might find
-- Edit readme.md and add any comments. It can be about what you did, what you would have done if you had more time, etc.
-- Send us the link of your repository.
-
-#### Restrictions
-- use java 8
-
-
-#### What we will look for
-- Readability of your code
-- Documentation
-- Comments in your code 
-- Appropriate usage of spring boot
-- Appropriate usage of packages
-- Is the application running as expected
-- No performance issues
-
-#### Your experience in Java
-
-Please let us know more about your Java experience in a few sentences. For example:
-
-- I have 3 years experience in Java and I started to use Spring Boot from last year
-- I'm a beginner and just recently learned Spring Boot
-- I know Spring Boot very well and have been using it for many years
+  

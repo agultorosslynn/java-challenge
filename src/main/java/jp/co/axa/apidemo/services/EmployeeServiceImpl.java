@@ -4,39 +4,51 @@ import jp.co.axa.apidemo.entities.Employee;
 import jp.co.axa.apidemo.repositories.EmployeeRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 import java.util.Optional;
 
+/**
+ * Employee service implementation class
+ * 
+ * @author ALJ Devops
+ * @version 1.0
+ */
 @Service
-public class EmployeeServiceImpl implements EmployeeService{
+@Transactional
+public class EmployeeServiceImpl implements EmployeeService {
 
-    @Autowired
-    private EmployeeRepository employeeRepository;
+	/**
+	 * Employee repository DAO
+	 */
+	@Autowired
+	private EmployeeRepository employeeRepository;
 
-    public void setEmployeeRepository(EmployeeRepository employeeRepository) {
-        this.employeeRepository = employeeRepository;
-    }
+	@Override
+	public List<Employee> retrieveEmployees() {
+		List<Employee> employees = employeeRepository.findAll();
+		return employees;
+	}
 
-    public List<Employee> retrieveEmployees() {
-        List<Employee> employees = employeeRepository.findAll();
-        return employees;
-    }
+	@Override
+	public Employee getEmployee(Long employeeId) {
+		Optional<Employee> optEmp = employeeRepository.findById(employeeId);
+		return optEmp.get();
+	}
 
-    public Employee getEmployee(Long employeeId) {
-        Optional<Employee> optEmp = employeeRepository.findById(employeeId);
-        return optEmp.get();
-    }
+	@Override
+	public void saveEmployee(Employee employee) {
+		employeeRepository.save(employee);
+	}
 
-    public void saveEmployee(Employee employee){
-        employeeRepository.save(employee);
-    }
+	@Override
+	public void deleteEmployee(Long employeeId) {
+		employeeRepository.deleteById(employeeId);
+	}
 
-    public void deleteEmployee(Long employeeId){
-        employeeRepository.deleteById(employeeId);
-    }
-
-    public void updateEmployee(Employee employee) {
-        employeeRepository.save(employee);
-    }
+	@Override
+	public void updateEmployee(Employee employee) {
+		employeeRepository.save(employee);
+	}
 }
